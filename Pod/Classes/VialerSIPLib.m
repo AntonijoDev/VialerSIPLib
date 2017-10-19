@@ -16,6 +16,8 @@ NSString * const VSLNotificationUserInfoCallKey = @"VSLNotificationUserInfoCallK
 NSString * const VSLNotificationUserInfoCallIdKey = @"VSLNotificationUserInfoCallIdKey";
 NSString * const VSLNotificationUserInfoWindowIdKey = @"VSLNotificationUserInfoWindowIdKey";
 NSString * const VSLNotificationUserInfoWindowSizeKey = @"VSLNotificationUserInfoWindowSizeKey";
+NSString * const VSLNotificationUserInfoWindowStatusKey = @"VSLNotificationUserInfoWindowStatusKey";
+NSString * const VSLNotificationUserInfoWindowKey = @"VSLNotificationUserInfoWindowKey";
 
 @interface VialerSIPLib()
 @property (strong, nonatomic) VSLEndpoint *endpoint;

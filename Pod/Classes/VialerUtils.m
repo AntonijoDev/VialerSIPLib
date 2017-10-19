@@ -9,6 +9,9 @@
 
 + (NSString *)cleanPhoneNumber:(NSString *)phoneNumber {
     // Sometimes a number has a country code and the leading zero for the local area code. When cleaning the number, we keep the country code and strip out the leading area code.
+    
+    return phoneNumber;
+    
     phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"(0)" withString:@""];
 
     phoneNumber = [[phoneNumber componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@""];

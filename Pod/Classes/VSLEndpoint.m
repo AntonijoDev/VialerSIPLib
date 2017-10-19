@@ -557,10 +557,17 @@ static void onCallMediaEvent(pjsua_call_id call_id,
             (ci.media[med_idx].dir & PJMEDIA_DIR_DECODING))
         {
             wid = ci.media[med_idx].stream.vid.win_in;
+            
+            pj_status_t myStatus;
+            pjsua_vid_win_info wi;
+            myStatus = pjsua_vid_win_get_info(wid, &wi);
+            
             size = event->data.fmt_changed.new_fmt.det.vid.size;
             NSDictionary *userInfo = @{VSLNotificationUserInfoCallIdKey:@(call_id),
                                        VSLNotificationUserInfoWindowIdKey:@(wid),
-                                       VSLNotificationUserInfoWindowSizeKey:[NSValue valueWithCGSize:(CGSize){size.w, size.h}]};
+                                       VSLNotificationUserInfoWindowSizeKey:[NSValue valueWithCGSize:(CGSize){size.w, size.h}],
+                                       VSLNotificationUserInfoWindowStatusKey:@(myStatus)
+                                       };
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:VSLNotificationUserInfoVideoSizeRenderKey object:nil userInfo:userInfo];
             });
